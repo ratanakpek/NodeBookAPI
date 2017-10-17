@@ -1,0 +1,391 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "BookAPI Demo",
+    "description": "Sample spec for Book API",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Books",
+      "description": "Books Section"
+    },
+    {
+      "name": "Authors",
+      "description": "Authors Section"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/books": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewbook",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewbook",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
+    },
+    "/api/books/{bookID}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "bookID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bookID",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "bookID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bookID",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "bookID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          },
+          {
+            "name": "bookID",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "bookID",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+
+            }
+          },
+          {
+            "name": "bookID",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
+    },
+
+
+    "/api/authors": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewauthor",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewauthor",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
+    },
+    "/api/authors/{authorId}": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "authorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "Author ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "authorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "authorId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Author"
+            }
+          },
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Authors"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "authorId",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+
+            }
+          },
+          {
+            "name": "authorId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Book": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        }
+      }
+
+    }
+    ,
+    "Author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "book_type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
