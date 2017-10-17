@@ -6,7 +6,7 @@
     "description": "Sample spec for Book API",
     "termsOfService": "http://swagger.io/terms/"
   },
-  "basePath": "/",
+  "basePath": "/api/swagger",
   "tags": [
     {
       "name": "Books",
@@ -27,7 +27,7 @@
     "application/json"
   ],
   "paths": {
-    "/api/books": {
+    "/books": {
       "get": {
         "tags": [
           "Books"

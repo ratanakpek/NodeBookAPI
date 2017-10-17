@@ -6,9 +6,11 @@ var db=mongoose.connect('mongodb://localhost/bookAPI');
 var app=express();
 var argv = require('minimist')(process.argv.slice(2));
 var port=process.env.PORT || 2000;
+
 /*Model*/
 var Author=require('./models/authorModel');
 var Book =require('./models/bookModel.js');
+var baseUrl="/api/swagger";
 
 
 
@@ -18,22 +20,20 @@ app.use(bodyParser.json());
 
 /*Router*/
 var bookRouter=require('./Routes/bookRoutes')(Book);
-app.use("/api/books", bookRouter);
+app.use(baseUrl+"/books", bookRouter);
 
 var authorRouter=require('./Routes/authorRoutes')(Author);
-app.use("/api/authors", authorRouter);
+app.use(baseUrl+"/authors", authorRouter);
 
 
 
 //swagger
 var subpath = express();
 var swagger = require("swagger-node-express").createNew(subpath);
-app.use(express.static('dist'));
-app.use(bodyParser());
-app.use("/base_url/api/swagger", subpath);
+
 
 swagger.setAppHandler(subpath);
-swagger.configure("http://localhost:8888/api/swagger", "0.2");
+swagger.configure("api", "0.2");
 
 swagger.setApiInfo({
     title: "example API",
@@ -54,10 +54,12 @@ app.get('/base_url/api/swagger', function (req, res) {
     res.sendFile(__dirname + '/dist/index.html');
 });
 
-
+app.use(express.static('dist'));
+app.use(bodyParser());
+app.use("/api/v1", subpath);
 
 swagger.configureSwaggerPaths('/api/swagger', 'api-docs', '');
-swagger.configure(port, '1.0.0');
+swagger.configure("http://localhost:8888", '1.0.0');
 
 
 
