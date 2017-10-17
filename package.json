@@ -15,6 +15,18 @@
     "gulp-nodemon": "^2.2.1",
     "swagger-node-express": "~2.0",
     "minimist": "*",
-    "mongoose": "^4.12.2"
+    "mongoose": "^4.12.2",
+    "ejs" : "~0.8.5",
+    "passport" : "~0.1.17",
+    "passport-local" : "~0.1.6",
+    "passport-google-oauth" : "~0.1.5",
+    "connect-flash" : "~0.1.1",
+    "bcrypt-nodejs" : "latest",
+    "passport-facebook" : "~1.0.2",
+    "passport-twitter" : "~1.0.2",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.0",
+    "method-override": "~1.0.0",
+    "express-session": "~1.0.0"
   }
 }
