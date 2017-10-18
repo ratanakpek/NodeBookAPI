@@ -62,7 +62,7 @@ app.get('/base_url/api/swagger', function (req, res) {
 });
 
 
-// require('./config/passport')(passport); // pass passport for configuration
+ require('./config/passport')(passport); // pass passport for configuration
 app.use(express.static('dist'));
 app.use(bodyParser());
 app.use("/api/v1", subpath);
