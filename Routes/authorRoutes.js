@@ -1,5 +1,5 @@
 var express=require("express");
-var routes=function (Author) {
+var routes=function (Author, data) {
     var authorRouter=express.Router();
 
     authorRouter.use("/:authorId", function (req, res, next) {
@@ -21,12 +21,15 @@ var routes=function (Author) {
             req.author.remove(req.params.authorId, function(err, author){
                 if(err)
                     res.status(500).send(err);
-                else
-                    res.json(author);
+                else {
+                    data.data = author;
+                    res.json(data);
+                }
             })
         })
         .get(function(req, res){
-                    res.json(req.author);
+            data.data=req.author;
+            res.json(data);
 
         })
         .put(function(req, res){
@@ -34,14 +37,16 @@ var routes=function (Author) {
             req.author.number=req.body.number;
             req.author.book_type=req.body.book_type;
             req.author.save();
-            res.json(req.author);
+            data.data=req.author;
+            res.json(data);
         })
         .patch(function(req, res){
             if(req.body.name){
 
                 req.author.name=req.body.name;
                 req.author.save();
-                res.json(req.author);
+                data.data=req.author;
+                res.json(data);
 
             }else{
                 res.status(404).send("Reqired name!");
@@ -54,7 +59,8 @@ var routes=function (Author) {
             if (req.body.name) {
                 var author = new Author(req.body);
                 author.save();
-                res.send(req.body);
+                data.data=req.body;
+                res.json(data);
             }else{
                 res.status(404).send("Name not found!")
             }
@@ -64,11 +70,11 @@ var routes=function (Author) {
                 if(err)
                     res.status(500).send(err)
                 else{
-                    res.json(author)
+                    data.data=author;
+                    res.json(data);
                 }
             })
         });
-
 
     return authorRouter;
 }

@@ -15,6 +15,10 @@
     {
       "name": "Authors",
       "description": "Authors Section"
+    },
+    {
+      "name": "Users",
+      "description": "Users Section"
     }
   ],
   "schemes": [
@@ -70,7 +74,7 @@
         }
       }
     },
-    "/api/books/{bookID}": {
+    "/books/{bookID}": {
       "get": {
         "tags": [
           "Books"
@@ -171,7 +175,6 @@
             "description": "Created user object",
             "required": true,
             "schema": {
-
             }
           },
           {
@@ -190,9 +193,7 @@
         }
       }
     },
-
-
-    "/api/authors": {
+    "/authors": {
       "get": {
         "tags": [
           "Authors"
@@ -235,7 +236,7 @@
         }
       }
     },
-    "/api/authors/{authorId}": {
+    "/authors/{authorId}": {
       "get": {
         "tags": [
           "Authors"
@@ -336,13 +337,82 @@
             "description": "Created user object",
             "required": true,
             "schema": {
-
             }
           },
           {
             "name": "authorId",
             "in": "path",
             "description": "ID of pet to return",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewbook",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewbook",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
+    },
+    "/users/logins": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewbook",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "email of pet to return",
             "required": true,
             "type": "string",
             "format": "int64"
@@ -370,9 +440,7 @@
           "type": "string"
         }
       }
-
-    }
-    ,
+    },
     "Author": {
       "type": "object",
       "properties": {
@@ -383,6 +451,17 @@
           "type": "integer"
         },
         "book_type": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
           "type": "string"
         }
       }

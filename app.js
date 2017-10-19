@@ -10,6 +10,7 @@ var port=process.env.PORT || 2000;
 /*Model*/
 var Author=require('./models/authorModel');
 var Book =require('./models/bookModel.js');
+var User =require('./models/userModel.js');
 var baseUrl="/api/swagger";
 
 //Authentication================
@@ -20,17 +21,25 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 
+//Standard response
+var data = {
+    code : 200,
+    msg : "Successfully!"
+};
+
 
 //middleware ========================================================
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 /*Router*/
-var bookRouter=require('./Routes/bookRoutes')(Book);
+var bookRouter=require('./Routes/bookRoutes')(Book, data);
 app.use(baseUrl+"/books", bookRouter);
 
-var authorRouter=require('./Routes/authorRoutes')(Author);
+var authorRouter=require('./Routes/authorRoutes')(Author, data);
 app.use(baseUrl+"/authors", authorRouter);
+
+
 
 
 
@@ -62,7 +71,7 @@ app.get('/base_url/api/swagger', function (req, res) {
 });
 
 
- require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
 app.use(express.static('dist'));
 app.use(bodyParser());
 app.use("/api/v1", subpath);
@@ -82,6 +91,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+
+var userRouter=require('./Routes/userRoutes')(User, passport, data);
+app.use(baseUrl+"/users", userRouter);
 
 swagger.configureSwaggerPaths('/api/swagger', 'api-docs', '');
 swagger.configure("http://localhost:8888", '1.0.0');
