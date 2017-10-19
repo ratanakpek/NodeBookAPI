@@ -66,7 +66,7 @@ app.get('/', function (req, res) {
 });
 
 
-app.get('/base_url/api/swagger', function (req, res) {
+app.get('/api/swagger', function (req, res) {
     res.sendFile(__dirname + '/dist/index.html');
 });
 
