@@ -16,7 +16,7 @@ var routes=function(User, passport, data){
                     res.status(500).send(err);
                 else{
                     data.data=user;
-                    res.json(user)
+                    res.json(data)
                 }
 
             });
@@ -48,7 +48,7 @@ var routes=function(User, passport, data){
                 data : req.user
             }
 
-            res.send(req.user);
+            res.send(data);
         });
 
     userRotuer.route('/logouts')
@@ -60,7 +60,7 @@ var routes=function(User, passport, data){
                 data : req.user
             }
            // res.redirect('/');
-             res.send(req.user);
+             res.send(data);
         });
 
     return userRotuer;
