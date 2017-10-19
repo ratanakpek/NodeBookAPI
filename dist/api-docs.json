@@ -424,6 +424,23 @@
           }
         }
       }
+    },
+    "/users/logouts": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Returns the status of something",
+        "operationId": "viewbook",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "response"
+          }
+        }
+      }
     }
   },
   "definitions": {

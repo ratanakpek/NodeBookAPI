@@ -2,7 +2,7 @@ var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser=require("body-parser");
 
-var db=mongoose.connect('mongodb://localhost/bookAPI');
+var db=mongoose.connect('mongodb://ratanak:123456@ds125255.mlab.com:25255/bookapi');
 var app=express();
 var argv = require('minimist')(process.argv.slice(2));
 var port=process.env.PORT || 2000;
